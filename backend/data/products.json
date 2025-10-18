@@ -1,0 +1,43 @@
+[
+  {
+    "id": "dep-001",
+    "type": "deposit",
+    "name_kk": "Жинақ депозиті",
+    "name_ru": "Накопительный депозит",
+    "name_en": "Savings deposit",
+    "desc_kk": "Ай сайынғы салыммен, мерзімі 12 ай.",
+    "desc_ru": "С ежемесячными взносами, срок 12 мес.",
+    "desc_en": "Monthly top-ups, 12 months term.",
+    "rate": 12.5,
+    "term": 12,
+    "min_amount": 10000,
+    "shariah": true,
+    "link": "https://zamanbank.kz/ru/"
+  },
+  {
+    "id": "mur-001",
+    "type": "murabaha",
+    "name_kk": "Мурабаха (тауарлық қаржыландыру)",
+    "name_ru": "Мурабаха (товарное финансирование)",
+    "name_en": "Murabaha",
+    "desc_kk": "Тауарды үстемеақымен бөліп сату.",
+    "desc_ru": "Покупка товара с продажей в рассрочку с наценкой.",
+    "desc_en": "Cost-plus sale with installments.",
+    "term": 18,
+    "min_amount": 200000,
+    "shariah": true,
+    "link": "https://www.zamanbank.kz/ru/islamic-finance/islamskie-finansy"
+  },
+  {
+    "id": "card-001",
+    "type": "card",
+    "name_kk": "Дебет картасы",
+    "name_ru": "Дебетовая карта",
+    "name_en": "Debit card",
+    "desc_kk": "Кэшбек пен қауіпсіздік.",
+    "desc_ru": "Кэшбек и безопасность.",
+    "desc_en": "Cashback and security.",
+    "shariah": true,
+    "link": "https://zamanbank.kz/ru/"
+  }
+]

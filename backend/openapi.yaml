@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Zamanbek MVP API
+  version: 0.2.0
+servers:
+  - url: http://localhost:{port}
+    variables:
+      port:
+        default: "8080"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API token
+security:
+  - bearerAuth: []
+paths:
+  /healthz:
+    get:
+      security: []
+      responses:
+        "200": { description: OK }
+  /swagger:
+    get:
+      security: []
+      responses:
+        "200": { description: UI }
+  /llm/chat:
+    post:
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message: { type: string }
+                temperature: { type: number }
+                lang: { type: string, enum: [kk,ru,en] }
+      responses:
+        "200": { description: Chat reply }
+  /products:
+    get:
+      security: []
+      parameters:
+        - in: query
+          name: type
+          schema: { type: string, enum: [deposit, murabaha, card] }
+        - in: query
+          name: lang
+          schema: { type: string, enum: [kk,ru,en], default: kk }
+      responses:
+        "200": { description: List of products (i18n view) }
+  /glossary:
+    get:
+      security: []
+      parameters:
+        - in: query
+          name: term
+          schema: { type: string }
+      responses:
+        "200": { description: Glossary item or list }
+  /goals:
+    get:
+      responses:
+        "200": { description: Goals list }
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, target_amount]
+              properties:
+                title: { type: string }
+                target_amount: { type: number }
+                deadline_months: { type: integer, default: 12 }
+                income: { type: number }
+                savings_rate: { type: number }
+                lang: { type: string, enum: [kk,ru,en] }
+      responses:
+        "200": { description: Created }
+  /goals/{id}/plan:
+    post:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+        - in: query
+          name: lang
+          schema: { type: string, enum: [kk,ru,en] }
+      responses:
+        "200": { description: Plan }
+  /statements/upload:
+    post:
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file: { type: string, format: binary }
+      responses:
+        "200": { description: OK }
+  /spending:
+    get:
+      responses:
+        "200": { description: Aggregates }
+  /compare/peers:
+    get:
+      responses:
+        "200": { description: Peers percentiles }

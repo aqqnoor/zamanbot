@@ -1,0 +1,4 @@
+[
+  {"income": 350000, "food": 0.18, "transport": 0.10, "housing": 0.25, "health": 0.06, "other": 0.21, "savings_rate": 0.20},
+  {"income": 500000, "food": 0.15, "transport": 0.08, "housing": 0.22, "health": 0.05, "other": 0.20, "savings_rate": 0.30}
+]
